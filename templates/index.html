@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Lobby</title>
+
+    <script src="https://unpkg.com/htmx.org@1.9.9"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/ws.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        background-color: #1a202c;
+      }
+    </style>
+  </head>
+  <body>
+    <div hx-ext="ws" ws-connect="/join" class="flex justify-center pt-[10%] ">
+      <form id="form" ws-send>
+        <div
+          hx-get="/board"
+          hx-swap="innerHTML"
+          hx-target="this"
+          hx-trigger="load"
+          class="grid grid-cols-3 grid-rows-3 gap-2 w-[500px] h-[500px]"
+        ></div>
+      </form>
+    </div>
+  </body>
+</html>
